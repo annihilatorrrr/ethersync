@@ -30,8 +30,12 @@
           ...
         }:
         let
-          runtimeDeps = with pkgs; [ ];
-          buildDeps = with pkgs; [ ];
+          runtimeDeps = with pkgs; [
+            libgit2
+          ];
+          buildDeps = with pkgs; [
+            pkg-config
+          ];
           devDeps = with pkgs; [
             cargo-deny
             git
@@ -71,6 +75,9 @@
               buildFeatures = features;
               buildInputs = runtimeDeps;
               nativeBuildInputs = buildDeps;
+              env = {
+                LIBGIT2_NO_VENDOR = 1;
+              };
               doCheck = false;
             };
 
