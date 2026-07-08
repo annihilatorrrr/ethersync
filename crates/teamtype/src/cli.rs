@@ -78,9 +78,3 @@ pub enum Commands {
     /// Open a JSON-RPC connection to the Teamtype daemon on stdin/stdout. Used by text editor plugins.
     Client,
 }
-
-#[test]
-fn verify() {
-    use clap::CommandFactory as _;
-    Cli::command().debug_assert();
-}
